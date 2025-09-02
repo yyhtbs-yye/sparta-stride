@@ -1,4 +1,5 @@
-# Contanos
+# Sport Real-time TRacking, Identification & DEtection, on top of Contanos [STRIDE]
+
 
 **Contanos** is a lightweight Python framework that streamlines the containerization of machine learning (ML), deep learning (DL), and data visualization components using Docker. It provides a structured way to wrap various ML/DL tools into Docker containers with clear input/output interfaces, making it easier to deploy complex AI pipelines across cloud and edge environments. By using Contanos, developers can focus on their ML/DL logic while the framework handles container orchestration, standardized I/O handling, and inter-component communication.
 
@@ -187,31 +188,7 @@ To run a Contanos container, use `docker run` with the appropriate environment v
 The repository is organized into the following key directories and files:
 
 ```
-contanos/             # Core framework package
-├── base_processor.py    # Base class for processing units (common logic for modules)
-├── base_service.py      # Base class for service (main orchestrator that manages I/O and workers)
-├── base_worker.py       # Base class for worker (handles model inference loop)
-├── helpers/             # Helper scripts to simplify creating processes
-│   ├── create_a_processor.py  # Utility to create a processor instance from config
-│   └── start_a_service.py     # Utility to launch a service with given parameters
-├── io/                  # Input/Output interface implementations
-│   ├── mqtt_input_interface.py        # MQTT input (subscribe to topic for data)
-│   ├── mqtt_output_interface.py       # MQTT output (publish results to topic)
-│   ├── mqtt_sorted_input_interface.py # MQTT input that maintains order or sorting
-│   ├── multi_input_interface.py       # Interface to combine multiple inputs
-│   ├── rtsp_input_interface.py        # RTSP input (pull video frames from an RTSP source)
-│   └── rtsp_output_interface.py       # RTSP output (stream out video/frames via RTSP or related sink)
-├── utils/               # Utility functions and classes
-│   ├── create_args.py       # Define and parse command-line arguments for modules
-│   ├── create_configs.py    # Helpers to create config objects from raw inputs
-│   ├── format_results.py    # Utility to format model results into serializable output (e.g., JSON)
-│   ├── parse_config_string.py  # Parser for config strings like the MQTT/RTSP URIs
-│   └── setup_logging.py     # Convenient setup for logging format and levels
-└── visualizer/         # Visualization utilities for drawing on images/frames
-    ├── box_drawer.py       # Draw bounding boxes and labels on images
-    ├── skeleton_drawer.py  # Draw skeletal keypoints (for pose estimation)
-    └── trajectory_drawer.py# Draw trajectories for tracked objects
-projects/             # Example project modules built on Contanos
+stride/             # Example project modules built on Contanos
 ├── prj-annotation-cpu/    # Annotation/visualization module (CPU-based)
 │   ├── annotation_main.py    # Service that subscribes to data and original frames
 │   ├── annotation_worker.py  # Worker that draws annotations on frames
